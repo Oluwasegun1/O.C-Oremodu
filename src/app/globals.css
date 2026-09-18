@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-serif-default: "Cormorant Garamond", Georgia, serif;
+  --font-sans-default: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  
+  /* Primary Palette */
+  --color-navy: #0B1F33;
+  --color-navy-dark: #071524;
+  --color-navy-light: #15324D;
+  --color-charcoal: #171A1D;
+  --color-warm-bg: #F7F5F0;
+  --color-warm-card: #FFFFFF;
+  --color-warm-border: #E8E5DF;
+  
+  /* Secondary / Accents */
+  --color-gold: #B08D57;
+  --color-gold-light: #C5A069;
+  --color-gold-dark: #8F7040;
+  --color-gold-subtle: #F3ECE1;
+  --color-soft-gray: #6B7280;
+  --color-light-gray: #E5E7EB;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom Typography & Utility Classes */
+.font-serif-title {
+  font-family: var(--font-cormorant), var(--font-serif-default);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-sans-body {
+  font-family: var(--font-jakarta), var(--font-sans-default);
+}
+
+/* Custom background & text colors */
+.bg-navy-dark { background-color: #071524; }
+.bg-navy { background-color: #0B1F33; }
+.bg-navy-light { background-color: #15324D; }
+.bg-charcoal { background-color: #171A1D; }
+.bg-warm-bg { background-color: #F7F5F0; }
+.bg-warm-card { background-color: #FFFFFF; }
+.bg-gold-subtle { background-color: #F3ECE1; }
+.bg-gold { background-color: #B08D57; }
+
+.text-navy { color: #0B1F33; }
+.text-navy-dark { color: #071524; }
+.text-charcoal { color: #171A1D; }
+.text-gold { color: #B08D57; }
+.text-gold-light { color: #C5A069; }
+.text-soft-gray { color: #6B7280; }
+.text-light-gray { color: #E5E7EB; }
+
+.border-warm-border { border-color: #E8E5DF; }
+.border-gold { border-color: #B08D57; }
+.border-gold-light { border-color: #C5A069; }
+.border-navy { border-color: #0B1F33; }
+
+/* Elegant hairline borders & gold rules */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, #B08D57 0%, rgba(176, 141, 87, 0.2) 100%);
+}
+
+.gold-rule-centered {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #B08D57 50%, transparent 100%);
+}
+
+/* Smooth transitions */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F7F5F0;
+  color: #171A1D;
+  font-family: var(--font-jakarta), var(--font-sans-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus styles for accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid #B08D57;
+  outline-offset: 2px;
 }
