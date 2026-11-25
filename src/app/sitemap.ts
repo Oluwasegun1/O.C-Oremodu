@@ -3,7 +3,7 @@ import { PRACTICE_AREAS } from "@/data/practice-areas";
 import { LEGAL_INSIGHTS } from "@/data/insights";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://adebayolegal.ng";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://olubunmioremodu.com";
 
   const staticRoutes = [
     "",

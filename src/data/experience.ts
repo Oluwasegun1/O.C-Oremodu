@@ -1,133 +1,186 @@
-export interface SelectedMatter {
+export interface WorkExperienceRole {
   id: string;
-  category: string;
-  title: string;
+  role: string;
+  organization: string;
+  location: string;
+  period: string;
+  sector: "Public Sector" | "Private Practice";
+  focusTags: string[];
   summary: string;
-  outcome: string;
-  keyDetails: string[];
-  jurisdiction: string;
+  responsibilities: string[];
 }
 
-export const SELECTED_MATTERS: SelectedMatter[] = [
+export interface ProBonoInitiative {
+  id: string;
+  area: string;
+  title: string;
+  location?: string;
+  description: string;
+}
+
+export const WORK_EXPERIENCE: WorkExperienceRole[] = [
   {
-    id: "matter-corporate-restructuring",
-    category: "Corporate & Commercial Law",
-    title: "Cross-Border Commercial Advisory & Entity Restructuring",
+    id: "moj-osun-2026",
+    role: "NYSC Associate — Corporate & Legal Drafting",
+    organization: "Ministry of Justice",
+    location: "Abere, Osun State",
+    period: "2026",
+    sector: "Public Sector",
+    focusTags: ["Commercial & Property Drafting", "Public-Sector Advisory", "Matrimonial Mediation", "Compliance"],
     summary:
-      "Advised a multi-jurisdictional logistics and technology venture on corporate restructuring, shareholder recapitalization, and regulatory licensing under CAMA 2020.",
-    outcome:
-      "Completed legal restructuring without business interruption, securing regulatory approvals from the Corporate Affairs Commission.",
-    keyDetails: [
-      "Drafted restructured Articles of Association and Founders' Agreements with multi-class voting rights.",
-      "Conducted statutory audit of corporate records and regularized historical compliance returns.",
-      "Structured employee stock option incentive scheme adhering to Nigerian labour and tax regulations.",
+      "Supporting corporate documentation, property agreements, public-sector advisory work, statutory research, court appearances, and family mediation within the Osun State Ministry of Justice.",
+    responsibilities: [
+      "Worked on commercial and property documentation, including sale of land agreements, commercial lease transactions, and other contractual documentation.",
+      "Supported advisory work on sale of land, tenancy, and debt recovery matters within a public-sector legal environment.",
+      "Conducted legal research on child custody and adoption, reviewing the Child Rights Act and Matrimonial Causes Act to support legal analysis and a research paper.",
+      "Assisted senior counsel with case preparation, legal correspondence, court appearances, completion of legal documentation, and compliance-related tasks.",
+      "Supported mediation involving child custody and child support in matrimonial matters.",
     ],
-    jurisdiction: "Lagos, Nigeria / Cross-border",
   },
   {
-    id: "matter-commercial-litigation",
-    category: "Dispute Resolution & Litigation",
-    title: "High-Stakes Commercial Contractual Dispute Defense",
+    id: "grandslaw-partners-2025",
+    role: "Legal Intern",
+    organization: "Grandslaw Partners",
+    location: "Ikoyi, Lagos",
+    period: "2025",
+    sector: "Private Practice",
+    focusTags: ["Commercial Litigation", "Maritime Litigation", "Pleadings & Filings", "Trial Preparation"],
     summary:
-      "Provided lead representation and strategic defense for a commercial distributor in a multi-million naira breach of contract claim before the High Court of Lagos State.",
-    outcome:
-      "Successfully defended against unreasonable liquidated damages claims and facilitated a favorable consent judgment preserving trading relations.",
-    keyDetails: [
-      "Drafted detailed Statement of Defense establishing force majeure and mitigating supply chain disruptions.",
-      "Resisted an ex-parte freezing application targeting client operational bank accounts.",
-      "Steered contentious cross-examination that led opposing parties to seek court-connected settlement.",
+      "Supported senior counsel within a Lagos commercial and maritime litigation practice through pleadings drafting, case preparation, court filings, and courtroom attendance.",
+    responsibilities: [
+      "Assisted senior counsel with court appearances, trial preparation, and litigation-related case work.",
+      "Drafted and reviewed court documents and pleadings in matters arising within the firm's commercial and maritime litigation practice.",
+      "Supported preparation and filing of matters through legal documentation, case preparation, and court processes.",
     ],
-    jurisdiction: "High Court of Lagos State (Commercial Division)",
   },
   {
-    id: "matter-arbitration-infrastructure",
-    category: "Arbitration & ADR",
-    title: "Commercial Construction & Infrastructure Arbitration",
+    id: "moj-akwa-ibom-2023",
+    role: "Legal Intern — Corporate & Legal Drafting",
+    organization: "Ministry of Justice",
+    location: "Uyo, Akwa Ibom State",
+    period: "2023",
+    sector: "Public Sector",
+    focusTags: ["Administrative Law", "Government Processes", "Matrimonial & Adoption Research"],
     summary:
-      "Acted as co-counsel representing an indigenous engineering contractor in arbitration proceedings arising from delayed milestone payments and contract variations.",
-    outcome:
-      "Secured a favorable arbitral award covering substantiated variations and statutory interest.",
-    keyDetails: [
-      "Presented expert technical evidence reconciling bill of quantities with certified architectural certificates.",
-      "Navigated expedited proceedings under the Arbitration and Mediation Act 2023.",
-      "Drafted the formal Terms of Final Award recognized for enforcement before the High Court.",
+      "Gained structured exposure to administrative law and state legal administration while assisting senior counsel with public-sector statutory research and analysis.",
+    responsibilities: [
+      "Developed practical exposure to government legal processes and administrative law.",
+      "Assisted senior counsel with legal research concerning government involvement in matrimonial causes and government adoption practices.",
+      "Supported research and legal analysis on public-sector legal matters under supervision.",
     ],
-    jurisdiction: "Lagos Court of Arbitration (LCA)",
   },
   {
-    id: "matter-real-estate-conveyance",
-    category: "Real Estate & Property Law",
-    title: "Prime Commercial Real Estate Acquisition & Title Perfection",
+    id: "adeyemi-aluko-2022",
+    role: "Legal Intern",
+    organization: "Adeyemi Aluko & Associates",
+    location: "Sango-Ota, Ogun State",
+    period: "2022",
+    sector: "Private Practice",
+    focusTags: ["Civil Litigation", "Family & Domestic Violence", "Mediation Support", "Climate & Energy Research"],
     summary:
-      "Advised an institutional investor on the due diligence, acquisition, and title perfection of a prime commercial property portfolio located in Ikoyi and Victoria Island.",
-    outcome:
-      "Identified hidden encumbrances during land registry search, renegotiated indemnity protections, and successfully secured Governor's Consent.",
-    keyDetails: [
-      "Conducted extensive investigation at the Lagos State Lands Bureau and verified Gazette coordinates.",
-      "Structured escrow payment milestones linked to physical vacant possession and title document release.",
-      "Prepared and registered Deeds of Assignment with certified land title issuance.",
+      "Supported civil litigation, family law matters, supervised mediation, community legal education, and policy-focused legal research on climate and energy law.",
+    responsibilities: [
+      "Supported associates in court proceedings and litigation practice on civil matters.",
+      "Worked on civil matters involving divorce, domestic violence in marriage, and child custody, including legal research and matter preparation.",
+      "Participated in public legal education and community enlightenment on criminal and civil law.",
+      "Provided research and supervised advisory/mediation support on commercial transactions, labour abuse, and fraud-related matters.",
+      "Conducted legal research on climate law and energy-sector policies in Nigeria.",
     ],
-    jurisdiction: "Lagos State Lands Registry, Alausa, Ikeja",
   },
   {
-    id: "matter-employment-restructuring",
-    category: "Employment & Labour Law",
-    title: "Corporate Redundancy & Executive Severance Advisory",
+    id: "adoydam-solicitors-2017",
+    role: "Legal Intern",
+    organization: "Adoydam Solicitors & Consultation Firm",
+    location: "Lagos",
+    period: "2017–2019",
+    sector: "Private Practice",
+    focusTags: ["Magistrate & High Courts", "Land & Property", "CAC Compliance", "Wills & ADR"],
     summary:
-      "Advised a financial services institution on lawful workforce restructuring affecting regional branch personnel, ensuring full compliance with NICN jurisprudence.",
-    outcome:
-      "Executed redundancy program without any industrial action or contentious court litigation.",
-    keyDetails: [
-      "Formulated fair selection criteria and drafted standardized severance agreements with mutual full-and-final release clauses.",
-      "Ensured statutory pension reconciliation and compliance with the Labour Act and Employees' Compensation Act.",
-      "Represented management in amicable consultative sessions with employee representatives.",
+      "Built foundational hands-on legal experience across civil and criminal litigation, land transactions, client interviews, regulatory filings, and out-of-court dispute resolution.",
+    responsibilities: [
+      "Gained early practical exposure to civil and criminal litigation, land transactions, land grabbing, document verification, fraud, and manslaughter matters.",
+      "Supported court proceedings and filings across Magistrate and High Courts.",
+      "Participated in client interviews and matter preparation involving wills and codicils, divorce, and settlement.",
+      "Supported ADR and out-of-court settlement work.",
+      "Assisted with legal and regulatory compliance, including CAC engagements, and conducted research across contract, taxation, and criminal litigation.",
     ],
-    jurisdiction: "National Industrial Court of Nigeria (NICN) jurisdiction",
+  },
+];
+
+export const PRO_BONO_EXPERIENCE: ProBonoInitiative[] = [
+  {
+    id: "pb-domestic-violence",
+    area: "Human Rights & ADR",
+    title: "Domestic Violence ADR & Rights Protection",
+    description:
+      "Supported ADR and human-rights matters involving domestic violence against women and children, prioritizing safety, legal awareness, and dignified redress.",
   },
   {
-    id: "matter-regulatory-compliance",
-    category: "Regulatory & Compliance",
-    title: "NDPA 2023 Data Privacy Audit & SCUML Licensing",
-    summary:
-      "Conducted comprehensive legal diagnostic for a pan-African payments platform entering the Nigerian market, covering data protection and anti-money laundering compliance.",
-    outcome:
-      "Achieved full compliance status with the Nigeria Data Protection Commission (NDPC) and secured Special Control Unit against Money Laundering (SCUML) clearance.",
-    keyDetails: [
-      "Conducted Data Protection Impact Assessment (DPIA) on customer onboarding and cardholder data pipelines.",
-      "Drafted external customer privacy policies, internal employee data manuals, and third-party data processing contracts.",
-      "Interfaced directly with regulatory desk officers to expedite clearance certificates.",
-    ],
-    jurisdiction: "Federal Republic of Nigeria",
+    id: "pb-child-custody",
+    area: "Family & Child Welfare",
+    title: "Pro Bono Child Support & Custody Settlements",
+    description:
+      "Participated in pro bono out-of-court settlement work on child support and child custody, helping families reach child-centered resolutions without protracted conflict.",
+  },
+  {
+    id: "pb-human-rights-enlightenment",
+    area: "Public Legal Education",
+    title: "Human-Rights Advocacy & Community Enlightenment",
+    description:
+      "Supported human-rights advocacy and public-enlightenment initiatives aimed at improving everyday citizen awareness of civil and criminal legal protections.",
+  },
+  {
+    id: "pb-prison-visitation",
+    area: "Access to Justice",
+    title: "Prison Visitation & Legal-Aid Initiatives",
+    description:
+      "Participated in prison visitation and legal-aid initiatives supporting vulnerable inmates and expanding practical access to legal guidance.",
+  },
+  {
+    id: "pb-environmental",
+    area: "Environmental Law",
+    title: "Environmental-Law Advocacy & Public Awareness",
+    location: "Osogbo, Osun State",
+    description:
+      "Supported environmental-law advocacy and public-awareness activities in Osogbo, Osun State, promoting legal literacy around environmental stewardship.",
+  },
+  {
+    id: "pb-nysc-labour",
+    area: "Labour & Youth Advocacy",
+    title: "Pro Bono Labour Advocacy for NYSC Corps Members",
+    location: "Osun State",
+    description:
+      "Provided pro bono advisory and advocacy support concerning labour issues affecting NYSC corps members in Osun State.",
   },
 ];
 
 export const LEGAL_PROCESS_STEPS = [
   {
     step: "01",
-    title: "Initial Consultation",
-    subtitle: "Understanding the Situation",
+    title: "Initial Enquiry & Listening",
+    subtitle: "Understanding the Facts",
     description:
-      "We begin with a thorough, confidential consultation to understand the factual background, your core objectives, immediate legal exposures, and commercial priorities.",
+      "Every engagement begins with attentive, confidential review of the factual background, relevant correspondence, and the practical outcome you need.",
   },
   {
     step: "02",
-    title: "Legal Assessment & Due Diligence",
-    subtitle: "Evaluating the Merits",
+    title: "Statutory Research & Verification",
+    subtitle: "Evaluating the Legal Position",
     description:
-      "We scrutinize relevant documents, contracts, statutory requirements, and applicable judicial precedents to evaluate legal strengths, vulnerabilities, and potential risks.",
+      "Documents, statutory provisions, and applicable Nigerian authorities are carefully verified to identify rights, compliance gaps, and risk exposure.",
   },
   {
     step: "03",
-    title: "Strategy Formulation",
-    subtitle: "Tailored Action Plan",
+    title: "Drafting & Resolution Strategy",
+    subtitle: "Choosing the Right Path",
     description:
-      "We design a clear, pragmatic legal strategy—whether negotiating settlement, drafting protective agreements, pursuing arbitration, or instituting court proceedings.",
+      "Whether preparing clear contractual instruments, advising on regulatory compliance, mediating an out-of-court settlement, or preparing court filings, the approach is tailored to the matter.",
   },
   {
     step: "04",
-    title: "Representation & Active Advisory",
-    subtitle: "Executing with Precision",
+    title: "Structured Execution & Follow-Through",
+    subtitle: "Clear Communication Throughout",
     description:
-      "We execute the agreed strategy with disciplined rigor, keeping you informed at every milestone with clear updates, transparent communication, and dedicated advocacy.",
+      "Work is carried out with disciplined attention to deadlines, formal documentation, and timely updates at every milestone.",
   },
 ];

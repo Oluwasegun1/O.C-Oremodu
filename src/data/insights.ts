@@ -1,7 +1,13 @@
 export interface LegalInsight {
   slug: string;
+  type: "Research Paper" | "Practice Brief";
   title: string;
-  category: "Corporate Law" | "Dispute Resolution" | "Real Estate" | "Employment Law" | "Arbitration" | "Regulatory";
+  category:
+    | "Climate & Energy Law"
+    | "Family & Child Rights"
+    | "Property & Land Law"
+    | "ADR & Mediation"
+    | "Corporate & Commercial";
   excerpt: string;
   readTime: string;
   publishDate: string;
@@ -18,175 +24,152 @@ export interface LegalInsight {
 
 export const LEGAL_INSIGHTS: LegalInsight[] = [
   {
-    slug: "what-every-nigerian-business-should-know-before-signing-a-commercial-agreement",
-    title: "What Every Nigerian Business Should Know Before Signing a Commercial Agreement",
-    category: "Corporate Law",
+    slug: "child-custody-and-adoption-in-nigeria-child-rights-and-matrimonial-causes",
+    type: "Research Paper",
+    title: "Child Custody and Adoption in Nigeria: Reviewing the Child Rights Act and Matrimonial Causes Act",
+    category: "Family & Child Rights",
     excerpt:
-      "A commercial contract is only as protective as its dispute mechanisms, limitation clauses, and termination triggers. Here is what founders and commercial directors must scrutinize before execution.",
-    readTime: "6 min read",
-    publishDate: "2026-06-15",
-    formattedDate: "June 15, 2026",
-    author: "O.C Oremodu",
-    authorRole: "Barrister & Solicitor of the Supreme Court of Nigeria",
+      "A statutory review examining how Nigeria's Child Rights Act and Matrimonial Causes Act interact in determining child custody, welfare benchmarks, and formal adoption processes.",
+    readTime: "7 min read",
+    publishDate: "2026-06-10",
+    formattedDate: "Research Paper • 2026",
+    author: "Olubunmi Chioma Oremodu",
+    authorRole: "Legal Practitioner — LL.B, B.L, AICMC",
     summaryKeyPoints: [
-      "Ambiguity in termination for convenience vs. termination for cause is the leading driver of contract litigation in Nigerian courts.",
-      "Always align force majeure clauses with Nigerian economic and infrastructural realities, including foreign exchange restrictions.",
-      "Clear multi-tiered dispute escalation clauses prevent unnecessary and expensive court appearances.",
+      "Both the Child Rights Act and Section 71 of the Matrimonial Causes Act elevate the best interests and welfare of the child as the paramount consideration in custody disputes.",
+      "Effective adoption administration depends on clear alignment between statutory requirements, state domestication of child-rights laws, and institutional oversight by Ministries of Justice and social welfare authorities.",
+      "Structured mediation in custody and child support matters often produces more durable, child-centered outcomes than adversarial litigation alone.",
     ],
     content: [
       {
-        heading: "The Presumption of Commercial Competence",
+        heading: "Statutory Foundations Governing Child Welfare in Nigeria",
         paragraphs: [
-          "Under Nigerian contract law, courts operate on the settled presumption that commercial entities entering into contracts do so with their eyes wide open. Except in rare cases involving fraud, duress, or fundamental illegality, Nigerian judges are hesitant to rewrite a bad bargain for a sophisticated business.",
-          "Consequently, treating agreement execution as a mere formality or relying on verbal understandings made during negotiations creates substantial vulnerability. In the event of a dispute, the parole evidence rule will generally bar oral statements that contradict the written terms of the signed document.",
+          "Questions surrounding child custody and adoption sit at the intersection of private family life and public statutory protection. In Nigeria, two core statutory instruments frame legal analysis in this area: the Matrimonial Causes Act—which governs custody, guardianship, and maintenance arising from statutory marriages—and the Child Rights Act, enacted to domesticate comprehensive child-welfare standards across the federation.",
+          "Across both frameworks, Nigerian courts consistently hold that parental preference or financial superiority cannot override the overall welfare of the child. Judges assess emotional stability, educational continuity, healthcare access, safe home environments, and—where appropriate—the child's own wishes.",
         ],
       },
       {
-        heading: "Scrutinizing the Termination Mechanism",
+        heading: "Navigating Adoption & State Institutional Oversight",
         paragraphs: [
-          "One of the most litigated provisions in Nigerian commercial practice is the termination clause. Contracts frequently contain vague language regarding 'material breach' without defining what constitutes materiality or establishing a realistic cure period.",
-          "Parties should clearly distinguish between termination for cause (e.g., insolvency, regulatory revocation, persistent non-payment) and termination for convenience. If termination for convenience is allowed, the notice period and transition obligations must be commercially reasonable.",
+          "Unlike informal fostering arrangements that remain common across communities, legal adoption permanently transfers parental rights and responsibilities through judicial order. Because adoption carries profound legal consequences for identity, inheritance, and child protection, state authorities and Ministries of Justice play a vital supervisory role in verifying eligibility, consent, and home suitability.",
+          "Harmonizing statutory adoption procedures across Nigerian states—particularly ensuring uniform domestication and implementation of Child Rights legislation—remains critical to protecting children from irregular placements and legal uncertainty.",
         ],
       },
       {
-        heading: "Dispute Resolution & Governing Law Clauses",
+        heading: "The Role of Mediation in Custody & Child Support Matters",
         paragraphs: [
-          "A multi-tiered dispute resolution clause—mandating executive negotiation, followed by formal mediation, and finally arbitration—often saves millions in contentious legal expenses. Specifying the seat of arbitration as Lagos under the Arbitration and Mediation Act 2023 provides speed, confidentiality, and procedural predictability compared to open court trials.",
+          "In practical family law settings, adversarial courtroom battles frequently deepen hostility between parents who must continue co-parenting long after proceedings conclude. Structured ADR and mediation offer a constructive forum to establish workable visitation schedules, child support commitments, and shared decision-making while keeping the child's wellbeing at the center.",
         ],
       },
     ],
-    relatedPracticeAreaSlug: "corporate-commercial-law",
+    relatedPracticeAreaSlug: "family-matrimonial-estates",
   },
   {
-    slug: "understanding-the-basics-of-property-documentation-in-nigeria",
-    title: "Understanding the Basics of Property Documentation & Title Perfection in Nigeria",
-    category: "Real Estate",
+    slug: "climate-law-and-energy-sector-policy-in-nigeria",
+    type: "Research Paper",
+    title: "Climate Law and Energy-Sector Policy in Nigeria: Balancing Transition, Regulation & Development",
+    category: "Climate & Energy Law",
     excerpt:
-      "A receipt or Family Deed is not legal title. We examine the statutory hierarchy of real estate documents in Nigeria, from Gazettes to Governors Consent.",
+      "An examination of Nigeria's evolving climate-law architecture and energy-sector policy landscape, exploring regulatory alignment, environmental stewardship, and sustainable energy pathways.",
     readTime: "8 min read",
-    publishDate: "2026-05-22",
-    formattedDate: "May 22, 2026",
-    author: "O.C Oremodu",
-    authorRole: "Barrister & Solicitor of the Supreme Court of Nigeria",
+    publishDate: "2026-04-18",
+    formattedDate: "Research Paper",
+    author: "Olubunmi Chioma Oremodu",
+    authorRole: "Legal Practitioner — LL.B, B.L, AICMC",
     summaryKeyPoints: [
-      "A contract of sale only conveys an equitable interest; legal title vests upon registration and perfection.",
-      "Under Section 22 of the Land Use Act, alienation of land without Governor's Consent renders the transaction inchoate.",
-      "Physical inspection, community root checks, and official Land Registry searches are non-negotiable prerequisites.",
+      "Nigeria faces the dual imperative of expanding reliable energy access for economic growth while meeting national and international climate commitments.",
+      "Coherent legal and policy frameworks are essential to translate climate goals into enforceable compliance standards across upstream, midstream, and power-sector operations.",
+      "Environmental-law advocacy and public awareness reinforce statutory regulation by fostering institutional and community accountability.",
     ],
     content: [
       {
-        heading: "The Myth of the 'Family Receipt'",
+        heading: "The Intersection of Energy Policy and Climate Regulation",
         paragraphs: [
-          "In high-growth real estate corridors across Lagos and Ogun states, countless purchasers rely on purchase receipts, survey plans, and letters of allocation issued by indigenous landowning families (omoo-onile). While these documents may evidence an initial financial exchange, they do not confer statutory legal ownership.",
-          "Under the Land Use Act 1978, all land within each state is vested in the State Governor in trust for the people. Private ownership exists as a leasehold right known as a Right of Occupancy, typically evidenced by a Certificate of Occupancy (C of O) or a Governor's Consent on a registered Deed of Assignment.",
+          "As Africa's largest population and a major energy-producing nation, Nigeria occupies a uniquely complex position in global climate governance. Domestic energy policy must simultaneously address chronic power-generation deficits, industrial growth demands, and the environmental impacts of fossil-fuel extraction and gas flaring.",
+          "Examining Nigerian climate law alongside energy-sector policies reveals the importance of institutional coordination. Statutory mandates only achieve meaningful environmental impact when regulatory agencies, operators, and state governments share clear compliance metrics, monitoring mechanisms, and enforcement capacity.",
         ],
       },
       {
-        heading: "The Perfection Triad: Stamp Duty, Consent, and Registration",
+        heading: "Regulatory Coherence & Sustainable Transition Pathways",
         paragraphs: [
-          "To transfer title from a holder of a C of O to a new buyer, the law mandates a three-step perfection process: stamping the deed at the Stamp Duty Office, applying for and securing Governor's Consent, and registering the perfected Deed of Assignment at the State Land Registry.",
-          "Failure to complete perfection means the purchaser holds merely an equitable interest. In the event the dishonest seller purports to sell the same property to a second purchaser who subsequently perfects their title without notice, the original buyer may lose the land.",
+          "A credible energy transition in Nigeria cannot rely on aspirational policy statements alone. It requires predictable legal incentives for renewable energy deployment, clearer licensing and grid-integration rules, and consistent enforcement of environmental impact assessments across energy projects.",
+          "Legal practitioners play a vital role in this ecosystem—helping bridge policy design, corporate regulatory compliance, contract drafting for cleaner energy projects, and community environmental-law enlightenment.",
+        ],
+      },
+      {
+        heading: "Public Awareness and Environmental Stewardship",
+        paragraphs: [
+          "Beyond national statutes, lasting environmental protection depends on informed citizens and active local advocacy. Strengthening public legal literacy around environmental rights and obligations empowers communities to engage constructively with regulators and project developers.",
         ],
       },
     ],
-    relatedPracticeAreaSlug: "real-estate-property-law",
+    relatedPracticeAreaSlug: "legal-research-human-rights",
   },
   {
-    slug: "arbitration-vs-litigation-under-the-arbitration-and-mediation-act-2023",
-    title: "Arbitration vs. Litigation: What Businesses in Nigeria Must Consider Under the AMA 2023",
-    category: "Arbitration",
+    slug: "property-documentation-and-land-verification-essentials-in-nigeria",
+    type: "Practice Brief",
+    title: "Essential Safeguards in Nigerian Property Documentation, Leases & Land Verification",
+    category: "Property & Land Law",
     excerpt:
-      "Nigeria's Arbitration and Mediation Act 2023 has fundamentally modernized commercial dispute resolution. How should your business choose between litigation and arbitration?",
-    readTime: "7 min read",
-    publishDate: "2026-04-10",
-    formattedDate: "April 10, 2026",
-    author: "O.C Oremodu",
-    authorRole: "Barrister & Solicitor of the Supreme Court of Nigeria",
+      "Why careful document verification, clear sale of land agreements, and properly drafted commercial leases are indispensable to avoiding title disputes and tenancy friction.",
+    readTime: "6 min read",
+    publishDate: "2026-03-14",
+    formattedDate: "Practice Brief • 2026",
+    author: "Olubunmi Chioma Oremodu",
+    authorRole: "Legal Practitioner — LL.B, B.L, AICMC",
     summaryKeyPoints: [
-      "The AMA 2023 introduces the Award Review Tribunal (ART), reducing appellate delays in Nigerian courts.",
-      "Arbitration guarantees strict commercial confidentiality, protecting trade secrets and business reputation.",
-      "Interim relief can now be granted quickly by emergency arbitrators even before the substantive tribunal is constituted.",
+      "Independent verification of root of title and identity of the vendor protects buyers against land grabbing and duplicate conveyances.",
+      "Well-drafted sale of land agreements and commercial leases prevent costly ambiguities over possession, rent review, repairs, and termination.",
+      "Early legal review of tenancy and debt recovery terms reduces the likelihood of protracted court proceedings.",
     ],
     content: [
       {
-        heading: "A New Era with the AMA 2023",
+        heading: "Verification Before Payment",
         paragraphs: [
-          "For decades, arbitration in Nigeria operated under the 1988 Arbitration and Conciliation Act, which struggled to curb delaying tactics by reluctant parties seeking recourse in traditional courts. The enactment of the Arbitration and Mediation Act 2023 (AMA 2023) has aligned Nigerian arbitration with global best practices.",
-          "Key improvements include explicit recognition of electronic arbitration agreements, streamlined interim relief via emergency arbitrators, and the statutory recognition of mediation outcomes under the Singapore Convention framework.",
+          "Many property disputes in Nigerian courts originate from buyers parting with purchase funds before conducting thorough documentary and physical verification. Confirming the authenticity of title records, survey details, and the vendor's legal capacity to transfer interest is the single most effective safeguard against land grabbing and fraudulent sales.",
         ],
       },
       {
-        heading: "Balancing Cost, Time, and Enforceability",
+        heading: "Precision in Sale Agreements and Commercial Leases",
         paragraphs: [
-          "While court litigation can be protracted through multiple levels of appeal, court fees are nominal compared to arbitrator honorariums and tribunal administration costs. For large commercial contracts, however, the direct cost of arbitration is far outweighed by the speed and finality of the award.",
+          "Whether documenting a sale of land or negotiating a commercial lease, vague templates often fail when disagreements arise. Clear clauses covering payment milestones, vacant possession, permitted use, maintenance obligations, renewal terms, and dispute escalation protect both landlords and tenants while preserving commercial relationships.",
         ],
       },
     ],
-    relatedPracticeAreaSlug: "arbitration-adr",
+    relatedPracticeAreaSlug: "property-land-matters",
   },
   {
-    slug: "key-legal-considerations-when-starting-a-business-in-nigeria",
-    title: "Key Legal Considerations When Starting a Business in Nigeria: Post-CAMA 2020 Realities",
-    category: "Corporate Law",
+    slug: "adr-and-mediation-practical-value-in-civil-and-family-disputes",
+    type: "Practice Brief",
+    title: "The Practical Value of Mediation & Out-of-Court Settlement in Civil and Matrimonial Disputes",
+    category: "ADR & Mediation",
     excerpt:
-      "From single-shareholder companies to beneficial ownership registers and minimum capital requirements, here is how modern enterprises should incorporate.",
+      "How structured mediation enables parties in commercial, labour, and family disputes to resolve conflicts confidentially, cost-effectively, and with lasting compliance.",
     readTime: "5 min read",
-    publishDate: "2026-03-18",
-    formattedDate: "March 18, 2026",
-    author: "O.C Oremodu",
-    authorRole: "Barrister & Solicitor of the Supreme Court of Nigeria",
+    publishDate: "2026-02-08",
+    formattedDate: "Practice Brief • 2026",
+    author: "Olubunmi Chioma Oremodu",
+    authorRole: "Legal Practitioner — LL.B, B.L, AICMC",
     summaryKeyPoints: [
-      "CAMA 2020 permits single-shareholder and single-director private companies for simplified operations.",
-      "Companies with foreign participation must comply with NIPC registration and revised minimum share capital guidelines.",
-      "Beneficial ownership disclosures (Persons with Significant Control - PSC) are strictly enforced by the Corporate Affairs Commission.",
+      "Mediation preserves confidentiality and ongoing relationships in ways public adversarial trials rarely can.",
+      "Voluntary, well-documented settlement agreements tend to achieve stronger compliance in child support, tenancy, and commercial recovery matters.",
+      "Combining legal knowledge with AICMC mediation principles helps parties evaluate realistic options and reach durable terms.",
     ],
     content: [
       {
-        heading: "Choosing the Right Business Vehicle",
+        heading: "When Settlement Serves Parties Better Than Trial",
         paragraphs: [
-          "The Companies and Allied Matters Act 2020 introduced modern business vehicles to Nigeria, including Limited Liability Partnerships (LLPs) and Limited Partnerships (LPs), alongside traditional Private Limited Companies (Ltd).",
-          "For technology ventures and service businesses, incorporating with the Corporate Affairs Commission (CAC) is only step one. Post-incorporation compliance, including SCUML registration (where applicable) and tax clearance setup with the Federal Inland Revenue Service (FIRS), is vital to opening corporate bank accounts and executing contracts.",
+          "Court litigation remains indispensable where urgent injunctive protection, constitutional interpretation, or authoritative legal precedent is needed. Yet for many everyday civil, commercial, tenancy, and family disputes, congested court dockets and escalating costs can leave both sides exhausted.",
+          "Mediation empowers parties to craft practical solutions tailored to their actual financial and personal circumstances—reducing delay while maintaining dignity and privacy.",
         ],
       },
       {
-        heading: "Governance & Founders' Safeguards",
+        heading: "Documenting Enforceable Outcomes",
         paragraphs: [
-          "Founders frequently make the mistake of adopting standard off-the-shelf Articles of Association without executing a custom Shareholders' Agreement. Without vesting schedules, dispute deadlocks, and drag-along clauses, internal shareholder disputes can paralyze an otherwise promising business.",
+          "A successful mediation must culminate in clear, unambiguous written terms of settlement. Careful legal drafting ensures that agreed timelines, payment schedules, custody arrangements, and mutual obligations are well-defined and capable of enforcement if necessary.",
         ],
       },
     ],
-    relatedPracticeAreaSlug: "corporate-commercial-law",
-  },
-  {
-    slug: "employment-contracts-essential-clauses-and-nicn-jurisprudence",
-    title: "Employment Contracts in Nigeria: Important Issues Employers and Employees Should Understand",
-    category: "Employment Law",
-    excerpt:
-      "Section 254C of the Nigerian Constitution grants the National Industrial Court expansive jurisdiction to enforce international best labour practices. What does this mean for workplace contracts?",
-    readTime: "7 min read",
-    publishDate: "2026-02-05",
-    formattedDate: "February 5, 2026",
-    author: "O.C Oremodu",
-    authorRole: "Barrister & Solicitor of the Supreme Court of Nigeria",
-    summaryKeyPoints: [
-      "The common law rule that 'an employer can terminate for good, bad, or no reason' has been modified by the National Industrial Court.",
-      "Broad, indefinite non-compete clauses are regularly struck down as unreasonable restraints of trade.",
-      "Clear workplace policies on harassment, data confidentiality, and disciplinary due process are essential for employer protection.",
-    ],
-    content: [
-      {
-        heading: "The Shift Away from Common Law Hire-and-Fire",
-        paragraphs: [
-          "Traditionally, English common law allowed an employer to terminate employment at will, provided appropriate notice or salary in lieu of notice was given. In Nigeria, however, the National Industrial Court of Nigeria (NICN) has held in numerous landmark judgments that international labour standards (particularly ILO Convention No. 158) require valid reasons connected with the capacity or conduct of the employee or operational requirements of the enterprise.",
-        ],
-      },
-      {
-        heading: "Drafting Enforceable Restrictive Covenants",
-        paragraphs: [
-          "Employers seeking to protect confidential client connections and intellectual property must draft restrictive covenants with geographical and temporal moderation. Clauses that attempt to prevent an employee from working in their chosen profession anywhere in Nigeria for years are routinely invalidated.",
-        ],
-      },
-    ],
-    relatedPracticeAreaSlug: "employment-labour-law",
+    relatedPracticeAreaSlug: "adr-mediation",
   },
 ];

@@ -6,15 +6,7 @@ import { Metadata } from "next";
 import { LEGAL_INSIGHTS } from "@/data/insights";
 import { LAWYER_DATA } from "@/data/lawyer";
 import { PRACTICE_AREAS } from "@/data/practice-areas";
-import {
-  ArrowLeft,
-  Clock,
-  Calendar,
-  Share2,
-  CheckCircle2,
-  ArrowRight,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowLeft, Clock, BookOpen, CheckCircle2, ArrowRight } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -57,14 +49,17 @@ export default async function IndividualInsightPage({ params }: Props) {
           <div className="space-y-4">
             <Link
               href="/insights"
-              className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-[#B08D57] hover:underline mb-2"
+              className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] text-[#C5A069] hover:underline mb-2"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              Back to Legal Insights
+              Back to Research &amp; Legal Briefs
             </Link>
 
-            <div className="flex items-center gap-4 text-xs text-[#E5E7EB]/70">
-              <span className="text-[#B08D57] font-semibold uppercase tracking-wider bg-[#071524] px-2.5 py-1 border border-[#B08D57]/30">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-[#E5E7EB]/75">
+              <span className="text-[#0B1F33] bg-[#B08D57] font-semibold uppercase tracking-wider px-2.5 py-0.5">
+                {art.type}
+              </span>
+              <span className="text-[#C5A069] font-semibold uppercase tracking-wider bg-[#071524] px-2.5 py-0.5 border border-[#B08D57]/30">
                 {art.category}
               </span>
               <span className="flex items-center gap-1.5 font-mono">
@@ -72,7 +67,7 @@ export default async function IndividualInsightPage({ params }: Props) {
                 {art.readTime}
               </span>
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#B08D57]" />
+                <BookOpen className="w-3.5 h-3.5 text-[#B08D57]" />
                 {art.formattedDate}
               </span>
             </div>
@@ -81,7 +76,7 @@ export default async function IndividualInsightPage({ params }: Props) {
               {art.title}
             </h1>
 
-            <div className="pt-2 text-xs text-[#E5E7EB]/80 flex items-center gap-2">
+            <div className="pt-2 text-xs text-[#E5E7EB]/80 flex flex-wrap items-center gap-1.5">
               <span>By</span>
               <strong className="text-white">{art.author}</strong>
               <span>— {art.authorRole}</span>
@@ -94,9 +89,9 @@ export default async function IndividualInsightPage({ params }: Props) {
       <article className="py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Executive Summary / Key Takeaways Box */}
-          <div className="bg-white border-l-4 border-[#B08D57] border-y border-r border-[#E8E5DF] p-6 sm:p-8 mb-12 shadow-xs">
-            <h2 className="font-serif-title text-xl font-semibold text-[#0B1F33] mb-4">
-              Executive Summary & Key Takeaways
+          <div className="bg-white border-l-4 border-[#B08D57] border-y border-r border-[#E8E5DF] p-6 sm:p-8 mb-10 shadow-xs">
+            <h2 className="font-serif-title text-xl sm:text-2xl font-semibold text-[#0B1F33] mb-4">
+              Key Research Insights &amp; Takeaways
             </h2>
             <ul className="space-y-3 text-xs sm:text-sm text-[#171A1D]/85">
               {art.summaryKeyPoints.map((point, idx) => (
@@ -113,7 +108,7 @@ export default async function IndividualInsightPage({ params }: Props) {
             {art.content.map((sec, idx) => (
               <div key={idx} className="space-y-4">
                 {sec.heading && (
-                  <h3 className="font-serif-title text-2xl sm:text-3xl font-semibold text-[#0B1F33] pt-4 first:pt-0">
+                  <h3 className="font-serif-title text-2xl sm:text-3xl font-semibold text-[#0B1F33] pt-3 first:pt-0">
                     {sec.heading}
                   </h3>
                 )}
@@ -128,53 +123,74 @@ export default async function IndividualInsightPage({ params }: Props) {
               </div>
             ))}
 
-            {/* Statutory Disclaimer inside article */}
-            <div className="pt-8 mt-8 border-t border-[#E8E5DF] text-xs text-[#6B7280] italic leading-relaxed">
-              <strong>Disclaimer:</strong> This publication provides general educational commentary on Nigerian legal principles and does not constitute formal legal advice. Readers facing specific commercial or contractual disputes should obtain tailored counsel from a qualified legal practitioner.
+            {relatedPracticeArea && (
+              <div className="pt-6 border-t border-[#E8E5DF] flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#F7F5F0] p-5">
+                <div>
+                  <span className="text-[10px] uppercase tracking-[0.16em] text-[#B08D57] font-semibold block">
+                    Related Practice Focus
+                  </span>
+                  <p className="font-serif-title text-lg font-semibold text-[#0B1F33]">
+                    {relatedPracticeArea.title}
+                  </p>
+                </div>
+                <Link
+                  href={`/practice-areas/${relatedPracticeArea.slug}`}
+                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-[#0B1F33] hover:text-[#B08D57]"
+                >
+                  Explore Practice Area
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            )}
+
+            {/* Disclaimer */}
+            <div className="pt-6 border-t border-[#E8E5DF] text-xs text-[#6B7280] italic leading-relaxed">
+              <strong>Disclaimer:</strong> This overview provides general educational and research commentary on Nigerian legal frameworks and does not constitute formal legal advice for a specific factual scenario.
             </div>
           </div>
 
-          {/* Author Bio Card */}
-          <div className="mt-12 bg-white border border-[#E8E5DF] p-8 flex flex-col sm:flex-row items-center gap-6 shadow-xs">
-            <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#B08D57] shrink-0">
+          {/* Author Bio Card with KC11 Portrait */}
+          <div className="mt-10 bg-white border border-[#E8E5DF] p-8 flex flex-col sm:flex-row items-center gap-6 shadow-xs">
+            <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#B08D57] shrink-0 bg-[#071524]">
               <Image
-                src="/images/funke_adebayo_hero.jpg"
+                src="/images/kc11.jpg"
                 alt={LAWYER_DATA.name}
                 fill
-                className="object-cover"
+                className="object-cover object-[50%_18%]"
+                sizes="80px"
               />
             </div>
             <div className="space-y-1 text-center sm:text-left">
-              <span className="text-[10px] uppercase tracking-wider text-[#B08D57] font-semibold">
-                Author & Principal Counsel
+              <span className="text-[10px] uppercase tracking-[0.16em] text-[#B08D57] font-semibold">
+                Author
               </span>
-              <h4 className="font-serif-title text-xl font-semibold text-[#0B1F33]">
+              <h4 className="font-serif-title text-2xl font-semibold text-[#0B1F33]">
                 {LAWYER_DATA.name}
               </h4>
               <p className="text-xs text-[#6B7280]">
-                {LAWYER_DATA.title} • LL.M (LSE) • MCIArb
+                {LAWYER_DATA.credentialsLine}
               </p>
               <p className="text-xs text-[#171A1D]/80 pt-1 leading-relaxed font-light">
-                Advising corporations, investors, and private clients on corporate strategy, contractual risk mitigation, and commercial dispute resolution across Nigeria.
+                Nigerian legal practitioner with practical experience across private law firms and Ministries of Justice, covering legal research, corporate and property drafting, litigation support, ADR mediation, and human-rights work.
               </p>
             </div>
           </div>
 
-          {/* Consultation CTA Banner */}
+          {/* Enquiry CTA Banner */}
           <div className="mt-8 p-8 bg-[#0B1F33] text-white border border-[#B08D57]/30 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="space-y-1 text-center sm:text-left">
-              <h4 className="font-serif-title text-xl font-semibold text-white">
-                Require strategic legal advice on this topic?
+              <h4 className="font-serif-title text-2xl font-semibold text-white">
+                Interested in this research topic or related legal support?
               </h4>
-              <p className="text-xs text-[#E5E7EB]/70 font-light">
-                Arrange a confidential consultation with our Ikoyi chambers.
+              <p className="text-xs text-[#E5E7EB]/75 font-light">
+                Connect directly with {LAWYER_DATA.shortName} for enquiries or collaboration.
               </p>
             </div>
             <Link
               href="/contact"
-              className="shrink-0 px-6 py-3 bg-[#B08D57] text-[#0B1F33] hover:bg-[#C5A069] text-xs font-semibold uppercase tracking-widest transition-colors inline-flex items-center gap-2"
+              className="shrink-0 px-6 py-3 bg-[#B08D57] text-[#0B1F33] hover:bg-[#C5A069] text-xs font-semibold uppercase tracking-[0.15em] transition-colors inline-flex items-center gap-2"
             >
-              Book Consultation
+              Get in Touch
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

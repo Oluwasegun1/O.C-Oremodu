@@ -6,13 +6,7 @@ import { PRACTICE_AREAS } from "@/data/practice-areas";
 import { LAWYER_DATA } from "@/data/lawyer";
 import ConsultationForm from "@/components/consultation/ConsultationForm";
 import PracticeAreaIcon from "@/components/ui/PracticeAreaIcon";
-import {
-  ArrowLeft,
-  CheckCircle2,
-  FileText,
-  ShieldAlert,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowLeft, CheckCircle2, FileText, Mail, Phone } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -30,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!pa) return {};
 
   return {
-    title: `${pa.title} | ${LAWYER_DATA.name} Chambers, Lagos`,
+    title: `${pa.title} | ${LAWYER_DATA.name}`,
     description: pa.shortDescription,
   };
 }
@@ -51,7 +45,7 @@ export default async function IndividualPracticeAreaPage({ params }: Props) {
           <div className="space-y-4 max-w-4xl">
             <Link
               href="/practice-areas"
-              className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-[#B08D57] hover:underline mb-2"
+              className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] text-[#C5A069] hover:underline mb-2"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               Back to All Practice Areas
@@ -82,24 +76,24 @@ export default async function IndividualPracticeAreaPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Main Information */}
-            <div className="lg:col-span-7 space-y-10">
+            <div className="lg:col-span-7 space-y-8">
               {/* Detailed Overview */}
-              <div className="bg-white border border-[#E8E5DF] p-8 sm:p-10 space-y-4">
-                <span className="text-xs uppercase tracking-widest text-[#B08D57] font-semibold block">
-                  Practice Scope & Perspective
+              <div className="bg-white border border-[#E8E5DF] p-8 sm:p-10 space-y-4 shadow-xs">
+                <span className="text-xs uppercase tracking-[0.18em] text-[#B08D57] font-semibold block">
+                  Practice Scope &amp; Perspective
                 </span>
-                <h2 className="font-serif-title text-2xl font-semibold text-[#0B1F33]">
-                  Overview of Services & Strategic Value
+                <h2 className="font-serif-title text-2xl sm:text-3xl font-semibold text-[#0B1F33]">
+                  Overview &amp; Practical Focus
                 </h2>
-                <p className="text-sm text-[#171A1D]/85 leading-relaxed font-light">
+                <p className="text-sm sm:text-[15px] text-[#171A1D]/85 leading-relaxed font-light">
                   {pa.overview}
                 </p>
               </div>
 
               {/* Key Services Checklist */}
-              <div className="bg-white border border-[#E8E5DF] p-8 sm:p-10 space-y-6">
+              <div className="bg-white border border-[#E8E5DF] p-8 sm:p-10 space-y-6 shadow-xs">
                 <h3 className="font-serif-title text-2xl font-semibold text-[#0B1F33]">
-                  Key Advisory & Procedural Capabilities
+                  Key Capabilities &amp; Legal Support
                 </h3>
                 <ul className="space-y-3.5 text-xs sm:text-sm text-[#171A1D]/85">
                   {pa.keyServices.map((srv, idx) => (
@@ -111,22 +105,39 @@ export default async function IndividualPracticeAreaPage({ params }: Props) {
                 </ul>
               </div>
 
-              {/* Statutory Framework & Nigerian Authorities */}
-              <div className="bg-white border border-[#E8E5DF] p-8 sm:p-10 space-y-4">
-                <span className="text-xs uppercase tracking-widest text-[#B08D57] font-semibold block">
+              {/* Documented Experience Highlights */}
+              <div className="bg-white border border-[#E8E5DF] p-8 sm:p-10 space-y-4 shadow-xs">
+                <span className="text-xs uppercase tracking-[0.18em] text-[#B08D57] font-semibold block">
+                  Practical Background
+                </span>
+                <h3 className="font-serif-title text-2xl font-semibold text-[#0B1F33]">
+                  Relevant Hands-On Experience
+                </h3>
+                <div className="space-y-3 pt-1">
+                  {pa.practicalExperienceHighlights.map((highlight, idx) => (
+                    <div
+                      key={idx}
+                      className="p-4 border-l-2 border-[#B08D57] bg-[#F7F5F0] text-xs sm:text-sm text-[#171A1D]/85 leading-relaxed font-light"
+                    >
+                      {highlight}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Statutory Framework */}
+              <div className="bg-white border border-[#E8E5DF] p-8 sm:p-10 space-y-4 shadow-xs">
+                <span className="text-xs uppercase tracking-[0.18em] text-[#B08D57] font-semibold block">
                   Legal Grounding
                 </span>
                 <h3 className="font-serif-title text-2xl font-semibold text-[#0B1F33]">
-                  Governing Statutes & Relevant Authorities
+                  Applicable Nigerian Statutory Frameworks
                 </h3>
-                <p className="text-xs text-[#6B7280] leading-relaxed">
-                  Our advice within this discipline is grounded in the active jurisprudence and regulatory provisions of:
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                   {pa.statutoryFramework.map((sf, idx) => (
                     <div
                       key={idx}
-                      className="p-3 bg-[#F7F5F0] border border-[#E8E5DF] text-xs text-[#0B1F33] flex items-center gap-2"
+                      className="p-3.5 bg-[#F7F5F0] border border-[#E8E5DF] text-xs text-[#0B1F33] flex items-center gap-2.5"
                     >
                       <FileText className="w-3.5 h-3.5 text-[#B08D57] shrink-0" />
                       <span>{sf}</span>
@@ -134,48 +145,35 @@ export default async function IndividualPracticeAreaPage({ params }: Props) {
                   ))}
                 </div>
               </div>
-
-              {/* Typical Matters Handled */}
-              <div className="bg-white border border-[#E8E5DF] p-8 sm:p-10 space-y-4">
-                <span className="text-xs uppercase tracking-widest text-[#B08D57] font-semibold block">
-                  Illustrative Engagements
-                </span>
-                <h3 className="font-serif-title text-2xl font-semibold text-[#0B1F33]">
-                  Typical Matters in Practice
-                </h3>
-                <p className="text-xs text-[#6B7280]">
-                  Examples of instructions typically managed within this practice area (presented in anonymized terms to safeguard client confidentiality):
-                </p>
-                <div className="space-y-3 pt-2">
-                  {pa.typicalMatters.map((tm, idx) => (
-                    <div
-                      key={idx}
-                      className="p-4 border-l-2 border-[#B08D57] bg-[#F7F5F0] text-xs text-[#171A1D]/85 leading-relaxed"
-                    >
-                      {tm}
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
 
-            {/* Right Consultation Sticky Form */}
+            {/* Right Sticky Enquiry Form */}
             <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
               <ConsultationForm defaultPracticeAreaSlug={pa.slug} />
 
-              <div className="p-6 bg-[#071524] text-white border border-white/10 text-xs space-y-2">
-                <span className="text-[#B08D57] font-semibold uppercase tracking-wider block">
-                  Direct Chambers Support
+              <div className="p-6 bg-[#071524] text-white border border-white/10 text-xs space-y-3">
+                <span className="text-[#C5A069] font-semibold uppercase tracking-[0.16em] block">
+                  Direct Contact
                 </span>
-                <p className="text-white/70">
-                  Prefer a telephone conference first? Call our Ikoyi consultation coordinator at:
+                <p className="text-white/75 font-light">
+                  Prefer to reach out directly by telephone or email?
                 </p>
-                <a
-                  href={`tel:${LAWYER_DATA.contact.phone}`}
-                  className="block font-mono text-sm text-[#B08D57] hover:underline pt-1"
-                >
-                  {LAWYER_DATA.contact.phoneDisplay}
-                </a>
+                <div className="space-y-2 pt-1">
+                  <a
+                    href={`tel:${LAWYER_DATA.contact.phone}`}
+                    className="flex items-center gap-2 font-mono text-sm text-[#C5A069] hover:underline"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    {LAWYER_DATA.contact.phoneDisplay}
+                  </a>
+                  <a
+                    href={`mailto:${LAWYER_DATA.contact.email}`}
+                    className="flex items-center gap-2 text-xs text-white/85 hover:text-[#C5A069] break-all"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-[#B08D57]" />
+                    {LAWYER_DATA.contact.email}
+                  </a>
+                </div>
               </div>
             </div>
           </div>

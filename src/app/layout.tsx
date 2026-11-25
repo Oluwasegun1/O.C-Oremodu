@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloatingButton from "@/components/layout/WhatsAppFloatingButton";
+import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
+import InitialPageLoader from "@/components/ui/InitialPageLoader";
 import { LAWYER_DATA } from "@/data/lawyer";
 
 const cormorant = Cormorant_Garamond({
@@ -20,37 +22,48 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://olubunmioremodu.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://adebayolegal.ng"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: `${LAWYER_DATA.name} | ${LAWYER_DATA.title}, Lagos, Nigeria`,
-    template: `%s | ${LAWYER_DATA.name} — Barrister & Solicitor`,
+    default: `${LAWYER_DATA.name} | Legal Practitioner (LL.B, B.L, AICMC) — Lagos, Nigeria`,
+    template: `%s | ${LAWYER_DATA.name} — Legal Practitioner`,
   },
-  description: `${LAWYER_DATA.name} provides strategic legal counsel, corporate advisory, arbitration, and commercial dispute resolution in Lagos, Nigeria.`,
+  description: `${LAWYER_DATA.name} (LL.B, B.L, AICMC) is a Nigerian legal practitioner with experience across private practice, Ministries of Justice, corporate and property documentation, litigation support, ADR mediation, and human-rights advocacy.`,
   keywords: [
-    "Nigerian Lawyer",
-    "Barrister Lagos",
-    "Solicitor Supreme Court Nigeria",
-    "Commercial Lawyer Lagos",
-    "Arbitration MCIArb Nigeria",
-    "Corporate Lawyer Ikoyi",
-    "Property Law Lagos Land Registry",
-    "O.C Oremodu Lawyer",
+    "Olubunmi Chioma Oremodu",
+    "Nigerian Legal Practitioner",
+    "Lawyer Lagos Nigeria",
+    "LL.B B.L AICMC Nigeria",
+    "Corporate and Commercial Legal Support Nigeria",
+    "ADR Mediation AICMC Nigeria",
+    "Legal Research and Drafting Lagos",
+    "Property and Land Documentation Nigeria",
   ],
   authors: [{ name: LAWYER_DATA.name }],
   creator: LAWYER_DATA.name,
   openGraph: {
     type: "website",
     locale: "en_NG",
-    url: "https://adebayolegal.ng",
-    title: `${LAWYER_DATA.name} | ${LAWYER_DATA.title}`,
+    url: siteUrl,
+    title: `${LAWYER_DATA.name} | Legal Practitioner (LL.B, B.L, AICMC)`,
     description: LAWYER_DATA.heroSubtext,
-    siteName: `${LAWYER_DATA.name} Chambers`,
+    siteName: LAWYER_DATA.name,
+    images: [
+      {
+        url: "/images/kc2.jpg",
+        width: 2054,
+        height: 2739,
+        alt: `${LAWYER_DATA.name}, Nigerian Legal Practitioner`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${LAWYER_DATA.name} | ${LAWYER_DATA.title}`,
+    title: `${LAWYER_DATA.name} | Legal Practitioner (LL.B, B.L, AICMC)`,
     description: LAWYER_DATA.heroSubtext,
+    images: ["/images/kc2.jpg"],
   },
   robots: {
     index: true,
@@ -65,27 +78,34 @@ export default function RootLayout({
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": ["LegalService", "Attorney"],
-    name: `${LAWYER_DATA.name} — ${LAWYER_DATA.title}`,
-    description: LAWYER_DATA.heroSubtext,
-    url: "https://adebayolegal.ng",
+    "@type": "Person",
+    name: LAWYER_DATA.name,
+    jobTitle: "Legal Practitioner (LL.B, B.L, AICMC)",
+    description: LAWYER_DATA.biography.shortLead,
+    url: siteUrl,
+    image: `${siteUrl}/images/kc2.jpg`,
     telephone: LAWYER_DATA.contact.phone,
     email: LAWYER_DATA.contact.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: `${LAWYER_DATA.address.suite}, ${LAWYER_DATA.address.building}, ${LAWYER_DATA.address.street}`,
-      addressLocality: LAWYER_DATA.address.area,
-      addressRegion: LAWYER_DATA.address.city,
+      addressLocality: "Lagos",
       addressCountry: "NG",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "6.4549",
-      longitude: "3.4246",
-    },
-    openingHours: "Mo-Fr 08:30-17:30",
-    priceRange: "$$",
-    knowsLanguage: ["en"],
+    alumniOf: [
+      {
+        "@type": "EducationalOrganization",
+        name: "Nigerian Law School, Victoria Island, Lagos",
+      },
+      {
+        "@type": "EducationalOrganization",
+        name: "Olabisi Onabanjo University",
+      },
+      {
+        "@type": "EducationalOrganization",
+        name: "Babcock University",
+      },
+    ],
+    knowsLanguage: ["en", "yo", "ig"],
   };
 
   return (
@@ -100,6 +120,8 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#F7F5F0] text-[#171A1D] font-sans-body">
+        <InitialPageLoader />
+        <ScrollProgressBar />
         <Header />
         <main className="flex-grow">{children}</main>
         <WhatsAppFloatingButton />

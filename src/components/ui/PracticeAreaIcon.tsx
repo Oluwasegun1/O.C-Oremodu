@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   HeartHandshake,
   FileCheck2,
+  Landmark,
   HelpCircle,
   LucideProps,
 } from "lucide-react";
@@ -34,6 +35,8 @@ export default function PracticeAreaIcon({ name, ...props }: PracticeAreaIconPro
       return <HeartHandshake {...props} />;
     case "FileCheck2":
       return <FileCheck2 {...props} />;
+    case "Landmark":
+      return <Landmark {...props} />;
     default:
       return <HelpCircle {...props} />;
   }

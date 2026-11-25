@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Shield, ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Nigeria Data Protection Act (NDPA 2023) Compliance",
-  description: `Privacy policy and data governance practices of ${LAWYER_DATA.name} Chambers, adhering to the Nigeria Data Protection Act 2023 and legal professional confidentiality.`,
+  title: "Privacy Policy | Nigeria Data Protection Act (NDPA 2023)",
+  description: `Privacy policy and data handling commitments for the professional legal website of ${LAWYER_DATA.name}, adhering to the Nigeria Data Protection Act 2023.`,
 };
 
 export default function PrivacyPolicyPage() {
@@ -17,19 +17,19 @@ export default function PrivacyPolicyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-[#B08D57] hover:underline mb-4"
+            className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] text-[#C5A069] hover:underline mb-4"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             Return to Homepage
           </Link>
-          <span className="text-xs uppercase tracking-widest text-[#B08D57] font-semibold block mb-1">
-            Statutory Data Protection
+          <span className="text-xs uppercase tracking-[0.18em] text-[#B08D57] font-semibold block mb-1">
+            Data Protection &amp; Confidentiality
           </span>
-          <h1 className="font-serif-title text-4xl sm:text-5xl font-semibold">
+          <h1 className="font-serif-title text-4xl sm:text-5xl font-semibold text-white">
             Privacy Policy
           </h1>
-          <p className="text-xs sm:text-sm text-[#E5E7EB]/70 font-light mt-2">
-            Effective Date: January 1, 2026 • Governed by the Nigeria Data Protection Act (NDPA) 2023
+          <p className="text-xs sm:text-sm text-[#E5E7EB]/75 font-light mt-2">
+            Governed by the Nigeria Data Protection Act (NDPA) 2023
           </p>
         </div>
       </section>
@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
             <div className="p-4 bg-[#F7F5F0] border-l-2 border-[#B08D57] flex items-center gap-3">
               <Shield className="w-5 h-5 text-[#B08D57] shrink-0" />
               <p className="text-xs text-[#0B1F33]">
-                {LAWYER_DATA.firmName} is committed to safeguarding client data in strict adherence to the Nigeria Data Protection Act 2023 (NDPA) and the Rules of Professional Conduct for Legal Practitioners in Nigeria.
+                {LAWYER_DATA.name} is committed to handling personal data responsibly in accordance with the Nigeria Data Protection Act 2023 (NDPA) and the Rules of Professional Conduct for Legal Practitioners in Nigeria.
               </p>
             </div>
 
@@ -50,66 +50,43 @@ export default function PrivacyPolicyPage() {
                 1. Scope of This Policy
               </h2>
               <p>
-                This Privacy Policy explains how {LAWYER_DATA.name} (&quot;we&quot;, &quot;our&quot;, or &quot;the Practice&quot;) collects, processes, protects, and retains personal and business information provided by visitors, prospective clients, and established clients through our website, consultation request forms, email correspondence, and telephone communications.
+                This Privacy Policy explains how personal information voluntarily shared through this website, email ({LAWYER_DATA.contact.email}), telephone, or WhatsApp communications with {LAWYER_DATA.name} is handled and safeguarded.
               </p>
             </section>
 
             <section className="space-y-3">
               <h2 className="font-serif-title text-xl font-semibold text-[#0B1F33]">
-                2. Information We Collect
+                2. Information Voluntarily Provided
               </h2>
-              <p>We only collect personal information that is voluntarily submitted to us, including:</p>
-              <ul className="list-disc list-inside space-y-1 pl-2 text-xs">
-                <li>Identification details: Full name, business or corporate entity name, designation.</li>
-                <li>Contact information: Email address, telephone/WhatsApp number, physical address.</li>
-                <li>Preliminary matter summary: Brief factual overview provided in consultation forms for conflict assessment.</li>
-                <li>Technical data: Anonymized IP addresses, browser types, and session duration to ensure security and optimize website performance.</li>
+              <ul className="list-disc list-inside space-y-1.5 pl-2 text-xs">
+                <li>Identification details: Full name and organization (where provided).</li>
+                <li>Contact details: Email address, telephone or WhatsApp number.</li>
+                <li>Enquiry overview: Preliminary summary submitted to assess the nature of the enquiry and avoid conflicts of interest.</li>
               </ul>
             </section>
 
             <section className="space-y-3">
               <h2 className="font-serif-title text-xl font-semibold text-[#0B1F33]">
-                3. Purpose and Legal Basis for Processing
-              </h2>
-              <p>Your personal data is processed under the following legal bases recognized by the NDPA 2023:</p>
-              <ul className="list-disc list-inside space-y-1 pl-2 text-xs">
-                <li>To conduct mandatory conflict-of-interest checks prior to entering into a formal legal engagement.</li>
-                <li>To schedule and facilitate preliminary legal consultations.</li>
-                <li>To perform obligations under a valid Letter of Engagement.</li>
-                <li>To comply with statutory and regulatory reporting obligations under Nigerian law (including anti-money laundering regulations where applicable).</li>
-              </ul>
-            </section>
-
-            <section className="space-y-3">
-              <h2 className="font-serif-title text-xl font-semibold text-[#0B1F33]">
-                4. Legal Professional Privilege & Confidentiality
+                3. Purpose of Processing
               </h2>
               <p>
-                All substantive legal disclosures, case facts, and documentary materials shared with our practice are protected by Legal Professional Privilege and professional secrecy under Section 192 of the Evidence Act 2011 and the Rules of Professional Conduct. We do not sell, rent, commercialize, or disclose client data to unauthorized third parties under any circumstances.
+                Personal information is used solely to review and respond to your enquiry, perform routine conflict-of-interest checks, schedule consultations, or fulfill mutually agreed professional engagements. Personal data is never sold or shared with unauthorized third parties.
               </p>
             </section>
 
             <section className="space-y-3">
               <h2 className="font-serif-title text-xl font-semibold text-[#0B1F33]">
-                5. Data Retention & Security
+                4. Confidentiality &amp; Your Rights Under NDPA 2023
               </h2>
               <p>
-                We maintain appropriate administrative, technical, and physical safeguards against unauthorized disclosure or loss. Preliminary inquiries where representation is not established are retained only for the period necessary to maintain conflict records and are securely purged thereafter.
-              </p>
-            </section>
-
-            <section className="space-y-3">
-              <h2 className="font-serif-title text-xl font-semibold text-[#0B1F33]">
-                6. Your Rights Under the NDPA 2023
-              </h2>
-              <p>
-                Under the Nigeria Data Protection Act 2023, data subjects possess rights including the right to request access to their personal data, request correction of inaccurate records, object to processing, or request data deletion subject to statutory compliance mandates.
-              </p>
-              <p>
-                To exercise any of these rights, contact our Practice Coordinator at:{" "}
-                <a href={`mailto:${LAWYER_DATA.contact.email}`} className="text-[#B08D57] underline">
+                Under the Nigeria Data Protection Act 2023, you may request access to, correction of, or deletion of personal information you have provided, subject to applicable legal obligations. To make a request, please email{" "}
+                <a
+                  href={`mailto:${LAWYER_DATA.contact.email}`}
+                  className="text-[#8F7040] underline font-medium"
+                >
                   {LAWYER_DATA.contact.email}
-                </a>.
+                </a>
+                .
               </p>
             </section>
           </div>

@@ -1,70 +1,62 @@
 export interface LawyerProfile {
   name: string;
+  shortName: string;
   initials: string;
   title: string;
-  firmName: string;
-  callNumberTag: string;
+  headline: string;
+  credentialsLine: string;
   tagline: string;
   heroStatement: string;
   heroSubtext: string;
   location: string;
-  address: {
-    suite: string;
-    building: string;
-    street: string;
-    area: string;
-    city: string;
-    country: string;
-    display: string;
-  };
+  practiceRegions: string[];
   contact: {
     email: string;
-    consultationEmail: string;
     phone: string;
     phoneDisplay: string;
     whatsappNumber: string; // international digits for wa.me link
     whatsappDisplay: string;
-    officeHours: string;
+    availability: string;
     responseCommitment: string;
   };
-  social: {
-    linkedin: string;
-    twitter?: string;
-  };
-  stats: {
-    yearsExperience: number;
-    yearsExperienceLabel: string;
-    mattersHandled: number;
-    mattersHandledLabel: string;
-    practiceAreasCount: number;
-    practiceAreasLabel: string;
-    locationBadge: string;
-  };
+  highlights: Array<{
+    value: string;
+    label: string;
+    detail: string;
+  }>;
   credentials: {
     degrees: Array<{
       degree: string;
       institution: string;
       year: string;
-      distinction?: string;
+      status?: string;
     }>;
     barAdmission: {
       bar: string;
+      institution: string;
       year: string;
       status: string;
     };
-    memberships: Array<{
-      title: string;
-      organization: string;
+    qualifications: Array<{
       acronym: string;
-      year?: string;
+      title: string;
+      description: string;
     }>;
   };
+  competencies: string[];
+  technicalSkills: string[];
+  languages: Array<{
+    name: string;
+    proficiency: string;
+  }>;
   biography: {
     shortLead: string;
     paragraphs: string[];
     timeline: Array<{
       year: string;
       title: string;
+      organization: string;
+      location: string;
       description: string;
     }>;
     principles: Array<{
@@ -76,172 +68,211 @@ export interface LawyerProfile {
 }
 
 export const LAWYER_DATA: LawyerProfile = {
-  name: "O.C Oremodu",
-  initials: "FA",
-  title: "Barrister & Solicitor of the Supreme Court of Nigeria",
-  firmName: "Adebayo Legal & Advisory",
-  callNumberTag: "SCN Call to Bar: 2008",
-  tagline: "Strategic Legal Counsel for Individuals, Businesses & Institutions",
-  heroStatement: "Strategic Legal Counsel for Individuals, Businesses & Institutions.",
+  name: "Olubunmi Chioma Oremodu",
+  shortName: "Olubunmi C. Oremodu",
+  initials: "OCO",
+  title: "Legal Practitioner — LL.B, B.L, AICMC",
+  headline: "Legal Practitioner  |  General Legal Practice  |  Corporate & Dispute Support",
+  credentialsLine: "LL.B (OOU) • B.L (Nigerian Law School, Lagos) • AICMC • LL.M (In View)",
+  tagline: "Thoughtful Legal Drafting, Advocacy Support & Practical Counsel",
+  heroStatement: "Versatile Legal Counsel Grounded in Research, Drafting & Resolution.",
   heroSubtext:
-    "Providing thoughtful legal advice, strong representation and practical solutions across complex commercial transactions, regulatory landscapes and high-stakes dispute resolution.",
+    "Early-career Nigerian legal practitioner (LL.B, B.L, AICMC) with practical experience across private law firms and Ministries of Justice—delivering meticulous legal drafting, corporate and property documentation, litigation support, ADR mediation, and human-rights advocacy.",
   location: "Lagos, Nigeria",
-  address: {
-    suite: "Suite 14B, 14th Floor",
-    building: "Mulliner Towers",
-    street: "39 Kingsway Road",
-    area: "Ikoyi",
-    city: "Lagos",
-    country: "Nigeria",
-    display: "Suite 14B, Mulliner Towers, 39 Kingsway Road, Ikoyi, Lagos, Nigeria",
-  },
+  practiceRegions: ["Lagos State", "Ogun State", "Osun State", "Akwa Ibom State"],
   contact: {
-    email: "contact@adebayolegal.ng",
-    consultationEmail: "consultations@adebayolegal.ng",
-    phone: "+23418884920",
-    phoneDisplay: "+234 (1) 888 4920",
-    whatsappNumber: "2348030004920",
-    whatsappDisplay: "+234 803 000 4920",
-    officeHours: "Monday – Friday: 8:30 AM – 5:30 PM (WAT)",
-    responseCommitment: "Enquiries are reviewed and acknowledged within 1 business day.",
+    email: "olubunmioremodu@gmail.com",
+    phone: "+2349029252707",
+    phoneDisplay: "+234 902 925 2707",
+    whatsappNumber: "2349029252707",
+    whatsappDisplay: "+234 902 925 2707",
+    availability: "Monday – Friday: 9:00 AM – 5:00 PM (WAT)",
+    responseCommitment: "Enquiries are reviewed and acknowledged promptly within 1 business day.",
   },
-  social: {
-    linkedin: "https://www.linkedin.com/in/funke-adebayo-legal",
-    twitter: "https://twitter.com/adebayolegal",
-  },
-  stats: {
-    yearsExperience: 16,
-    yearsExperienceLabel: "16+ Years Experience",
-    mattersHandled: 450,
-    mattersHandledLabel: "450+ Advisory & Dispute Matters",
-    practiceAreasCount: 8,
-    practiceAreasLabel: "8 Core Practice Areas",
-    locationBadge: "Lagos & Federal Scope",
-  },
+  highlights: [
+    {
+      value: "LL.B · B.L · AICMC",
+      label: "Bar & ADR Credentials",
+      detail: "Nigerian Law School (2024–2025) • LL.M In View",
+    },
+    {
+      value: "5 Legal Roles",
+      label: "Private & Public Practice",
+      detail: "Law Firms & State Ministries of Justice",
+    },
+    {
+      value: "4 States",
+      label: "Multi-Jurisdictional Exposure",
+      detail: "Lagos, Ogun, Osun & Akwa Ibom",
+    },
+    {
+      value: "10 Competencies",
+      label: "General & Specialist Support",
+      detail: "Corporate, Litigation, Property, ADR & Pro Bono",
+    },
+  ],
   credentials: {
     degrees: [
       {
-        degree: "LL.B (Bachelor of Laws)",
-        institution: "University of Lagos (UNILAG)",
-        year: "2007",
-        distinction: "First Class Honours",
+        degree: "LL.M. (Master of Laws)",
+        institution: "Babcock University",
+        year: "In View",
+        status: "Postgraduate Legal Studies",
       },
       {
-        degree: "BL (Barrister at Law)",
-        institution: "Nigerian Law School, Lagos Campus",
-        year: "2008",
-        distinction: "Call to the Nigerian Bar",
+        degree: "B.L. (Barrister at Law)",
+        institution: "Nigerian Law School, Victoria Island, Lagos",
+        year: "2024–2025",
+        status: "Qualifying Bar Examination & Call to the Nigerian Bar",
       },
       {
-        degree: "LL.M (Corporate & Commercial Law)",
-        institution: "London School of Economics and Political Science (LSE)",
-        year: "2012",
-        distinction: "With Merit",
+        degree: "AICMC — Professional Qualification",
+        institution: "Institute of Chartered Mediators and Conciliators",
+        year: "Accredited",
+        status: "Alternative Dispute Resolution & Mediation",
+      },
+      {
+        degree: "LL.B. (Bachelor of Laws)",
+        institution: "Olabisi Onabanjo University",
+        year: "2017–2023",
+        status: "Undergraduate Law Degree",
       },
     ],
     barAdmission: {
       bar: "Supreme Court of Nigeria",
-      year: "2008",
-      status: "Admitted as Barrister and Solicitor",
+      institution: "Nigerian Law School, Victoria Island, Lagos",
+      year: "2024–2025",
+      status: "Barrister & Solicitor (LL.B, B.L)",
     },
-    memberships: [
+    qualifications: [
       {
-        title: "Active Member",
-        organization: "Nigerian Bar Association (NBA)",
-        acronym: "NBA",
+        acronym: "B.L.",
+        title: "Nigerian Law School, Victoria Island, Lagos",
+        description: "Qualifying vocational legal training (2024–2025) for admission to legal practice in Nigeria.",
       },
       {
-        title: "Member — Section on Business Law",
-        organization: "NBA Section on Business Law (NBA-SBL)",
-        acronym: "NBA-SBL",
+        acronym: "LL.B.",
+        title: "Olabisi Onabanjo University",
+        description: "Foundational legal education (2017–2023) spanning statutory interpretation, jurisprudence, and core Nigerian law.",
       },
       {
-        title: "Member",
-        organization: "Chartered Institute of Arbitrators (UK)",
-        acronym: "MCIArb",
+        acronym: "AICMC",
+        title: "Associate, Institute of Chartered Mediators and Conciliators",
+        description: "Professional ADR qualification supporting structured mediation and out-of-court settlement work.",
       },
       {
-        title: "Member",
-        organization: "International Bar Association",
-        acronym: "IBA",
-      },
-      {
-        title: "Member",
-        organization: "Capital Market Solicitors Association",
-        acronym: "CMSA",
+        acronym: "LL.M.",
+        title: "Babcock University (In View)",
+        description: "Ongoing postgraduate legal studies deepening analytical and specialist capabilities.",
       },
     ],
   },
+  competencies: [
+    "Legal Research & Analysis",
+    "Legal Drafting",
+    "Corporate & Commercial Matters",
+    "Litigation & Court Processes",
+    "Property & Land Matters",
+    "Regulatory & Compliance Support",
+    "Legal Advisory",
+    "ADR & Mediation",
+    "Public-Sector / Administrative Law",
+    "Human Rights & Pro Bono Practice",
+  ],
+  technicalSkills: [
+    "Microsoft Word",
+    "Microsoft Excel",
+    "Microsoft PowerPoint",
+    "AI & Modern Productivity Tools",
+  ],
+  languages: [
+    { name: "English", proficiency: "Professional Fluency" },
+    { name: "Yoruba", proficiency: "Conversational" },
+    { name: "Igbo", proficiency: "Conversational" },
+  ],
   biography: {
     shortLead:
-      "O.C Oremodu is a seasoned Nigerian legal practitioner with over 16 years of post-call experience providing strategic counsel to leading corporations, high-net-worth individuals, emerging ventures, and institutional investors across Nigeria and cross-border jurisdictions.",
+      "Olubunmi Chioma Oremodu is an early-career legal practitioner (LL.B, B.L, AICMC; LL.M in view) with broad practical experience spanning private chambers, public-sector legal work across two State Ministries of Justice, corporate and property documentation, litigation support, ADR mediation, and human-rights advocacy.",
     paragraphs: [
-      "Admitted to the Nigerian Bar in 2008, Funke established her legal foundation within premier commercial litigation and corporate advisory practices in Lagos. Her practice bridges the gap between rigorous legal technicality and commercial pragmatism, guiding clients through Nigeria's evolving regulatory and economic realities.",
-      "With specialized postgraduate training from the London School of Economics (LSE) and accreditation as a Member of the Chartered Institute of Arbitrators (MCIArb), she regularly represents parties in commercial dispute resolution, contractual restructuring, real estate transactions, corporate governance advisory, and contentious proceedings before the High Courts, National Industrial Court, and Federal High Court of Nigeria.",
-      "Her approach is grounded in the principle that legal counsel must never be theoretical. It must be strategically actionable, risk-conscious, and tailored to preserve business value, maintain personal dignity, and safeguard assets within the Nigerian legal ecosystem.",
+      "Holding an LL.B from Olabisi Onabanjo University, a B.L from the Nigerian Law School (Victoria Island, Lagos), and an AICMC professional qualification—with an LL.M currently in view at Babcock University—Olubunmi brings a disciplined, versatile legal foundation shaped across both private legal practice and government legal service.",
+      "Her practical training began early at Adoydam Solicitors & Consultation Firm in Lagos (2017–2019), where she gained direct exposure to Magistrate and High Court filings, land transactions, document verification, wills and codicils, CAC engagements, and out-of-court settlements. She subsequently expanded her civil litigation, family law, mediation, and legal research capabilities at Adeyemi Aluko & Associates in Ogun State (2022) and the Ministry of Justice, Uyo, Akwa Ibom State (2023).",
+      "Following her commercial and maritime litigation internship at Grandslaw Partners in Ikoyi, Lagos (2025), she has served as an NYSC Associate in Corporate & Legal Drafting at the Ministry of Justice, Abere, Osun State (2026)—handling commercial lease transactions, sale of land agreements, tenancy and debt recovery advisory support, compliance documentation, child custody research, and matrimonial mediation.",
+      "Driven by a genuine commitment to access to justice, she pairs her growing focus on corporate/commercial law, dispute resolution, compliance, and legal advisory with active pro bono service spanning domestic violence mediation, child custody settlements, prison visitation, environmental-law advocacy, and labour support for NYSC corps members.",
     ],
     timeline: [
       {
-        year: "2007",
-        title: "Academic Distinction in Law",
+        year: "2026",
+        title: "NYSC Associate — Corporate & Legal Drafting",
+        organization: "Ministry of Justice",
+        location: "Abere, Osun State",
         description:
-          "Graduated with First Class Honours (LL.B) from the University of Lagos, receiving faculty awards in Commercial Law and Equity.",
+          "Drafting commercial and property documentation (sale of land agreements, commercial leases), supporting tenancy and debt recovery advisory, conducting statutory research on child custody and adoption, assisting senior counsel in court and compliance work, and supporting matrimonial mediation.",
       },
       {
-        year: "2008",
-        title: "Call to the Nigerian Bar",
+        year: "2025",
+        title: "Legal Intern — Commercial & Maritime Litigation",
+        organization: "Grandslaw Partners",
+        location: "Ikoyi, Lagos",
         description:
-          "Graduated from the Nigerian Law School and was formally admitted as a Barrister and Solicitor of the Supreme Court of Nigeria.",
+          "Assisted senior counsel with court appearances, trial preparation, and drafting and reviewing court documents and pleadings across commercial and maritime litigation matters.",
       },
       {
-        year: "2008 – 2011",
-        title: "Early Commercial & Dispute Practice",
+        year: "2024–2025",
+        title: "Barrister at Law (B.L.)",
+        organization: "Nigerian Law School",
+        location: "Victoria Island, Lagos",
         description:
-          "Honed foundational trial and appellate litigation skills across corporate disputes, commercial banking recoveries, and land title disputes in Lagos State.",
+          "Completed vocational bar training in corporate law practice, civil and criminal litigation, property law practice, and professional ethics.",
       },
       {
-        year: "2012",
-        title: "Postgraduate Specialization at LSE",
+        year: "2023",
+        title: "Legal Intern — Corporate & Legal Drafting",
+        organization: "Ministry of Justice",
+        location: "Uyo, Akwa Ibom State",
         description:
-          "Earned Master of Laws (LL.M) in Corporate and Commercial Law at the London School of Economics, focusing on international commercial arbitration and corporate finance governance.",
+          "Developed practical grounding in administrative law and government legal processes, supporting senior counsel with research on public-sector matters, matrimonial causes, and adoption practices.",
       },
       {
-        year: "2013 – 2018",
-        title: "Senior Commercial Advisory & MCIArb Admission",
+        year: "2022",
+        title: "Legal Intern — Civil Litigation, Advisory & Research",
+        organization: "Adeyemi Aluko & Associates",
+        location: "Sango-Ota, Ogun State",
         description:
-          "Admitted to the Chartered Institute of Arbitrators (MCIArb). Led transaction structuring, joint ventures, and regulatory compliance for financial and energy clients.",
+          "Supported civil litigation, matrimonial and domestic violence matters, community legal enlightenment, supervised mediation on commercial and labour issues, and legal research on Nigerian climate law and energy-sector policies.",
       },
       {
-        year: "2019 – Present",
-        title: "Principal Practice & Independent Counsel",
+        year: "2017–2023",
+        title: "Bachelor of Laws (LL.B.) & Early Practice Exposure",
+        organization: "Olabisi Onabanjo University & Adoydam Solicitors",
+        location: "Ogun State & Lagos",
         description:
-          "Delivering dedicated legal counsel to corporate entities, institutional clients, founders, and private families across Lagos, Abuja, and international corridors.",
+          "Completed LL.B. studies while gaining early practical legal training at Adoydam Solicitors & Consultation Firm (2017–2019) across Magistrate and High Court filings, land matters, CAC compliance, wills, ADR, and statutory research.",
       },
     ],
     principles: [
       {
-        id: "strategic-thinking",
-        title: "Strategic Thinking",
+        id: "meticulous-drafting",
+        title: "Meticulous Legal Drafting",
         description:
-          "We examine the wider commercial, financial, and relational implications of every legal matter rather than considering legal rules in a vacuum.",
+          "Every contract, pleading, lease, or legal correspondence is prepared with precision, statutory grounding, and clarity of obligation to protect parties against avoidable ambiguity.",
       },
       {
-        id: "clear-communication",
-        title: "Clear Communication",
+        id: "rigorous-research",
+        title: "Disciplined Legal Research",
         description:
-          "Legal advice should empower decision-making, not confuse. Complex statutory provisions are translated into plain, actionable counsel.",
+          "Legal analysis is anchored in thorough statutory review—from the Child Rights Act and Matrimonial Causes Act to commercial, regulatory, and climate-policy frameworks.",
       },
       {
-        id: "attention-to-detail",
-        title: "Meticulous Attention to Detail",
+        id: "constructive-resolution",
+        title: "Constructive Dispute Resolution",
         description:
-          "Careful document scrutiny, rigorous evidence analysis, and disciplined statutory interpretation form the cornerstone of every brief.",
+          "Combining courtroom preparation with AICMC mediation training to pursue principled out-of-court settlements where they best preserve rights, dignity, and commercial value.",
       },
       {
-        id: "professional-integrity",
-        title: "Uncompromising Professional Integrity",
+        id: "service-and-integrity",
+        title: "Integrity & Access to Justice",
         description:
-          "Every client matter is treated with the highest standard of fiduciary duty, strict confidentiality, and adherence to legal ethics.",
+          "Guided by professional ethics, strict confidentiality, and an enduring commitment to pro bono advocacy for women, children, workers, and underserved communities.",
       },
     ],
   },

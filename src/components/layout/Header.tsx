@@ -12,31 +12,34 @@ const NAV_LINKS = [
   { name: "About", href: "/about" },
   { name: "Practice Areas", href: "/practice-areas" },
   { name: "Experience", href: "/experience" },
-  { name: "Insights", href: "/insights" },
+  { name: "Research & Briefs", href: "/insights" },
   { name: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpenPath, setMenuOpenPath] = useState<string | null>(null);
   const pathname = usePathname();
+  const mobileMenuOpen = menuOpenPath === pathname;
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   const whatsappUrl = formatWhatsAppLink(
     LAWYER_DATA.contact.whatsappNumber,
-    "Hello Barrister Adebayo, I would like to make an enquiry regarding a legal consultation."
+    `Hello ${LAWYER_DATA.name}, I am reaching out via your website regarding a legal enquiry.`
   );
 
   return (
@@ -44,57 +47,61 @@ export default function Header() {
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-[#0B1F33]/95 backdrop-blur-md shadow-md py-3 border-b border-[#B08D57]/20"
-            : "bg-[#0B1F33] py-5 border-b border-white/10"
+            ? "bg-[#0B1F33]/96 backdrop-blur-md shadow-lg py-3 border-b border-[#B08D57]/25"
+            : "bg-[#0B1F33] py-4 sm:py-5 border-b border-white/10"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Brand Identity / Logo */}
-          <Link href="/" className="group flex items-center gap-3">
-            <div className="w-10 h-10 border border-[#B08D57] flex items-center justify-center bg-[#071524] text-[#B08D57] font-serif-title text-xl font-bold tracking-wider group-hover:bg-[#B08D57] group-hover:text-[#0B1F33] transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+          {/* Brand Identity / Monogram */}
+          <Link href="/" className="group flex items-center gap-3 shrink-0">
+            <div className="w-10 h-10 border border-[#B08D57] flex items-center justify-center bg-[#071524] text-[#B08D57] font-serif-title text-base font-bold tracking-widest group-hover:bg-[#B08D57] group-hover:text-[#0B1F33] transition-colors duration-200">
               {LAWYER_DATA.initials}
             </div>
             <div>
-              <span className="block font-serif-title text-lg sm:text-xl font-semibold text-[#F7F5F0] tracking-wide group-hover:text-[#B08D57] transition-colors">
-                {LAWYER_DATA.name.toUpperCase()}
+              <span className="block font-serif-title text-base sm:text-xl font-semibold text-[#F7F5F0] tracking-wide group-hover:text-[#C5A069] transition-colors leading-tight">
+                {LAWYER_DATA.shortName.toUpperCase()}
               </span>
-              <span className="block text-[10px] sm:text-[11px] font-sans-body tracking-widest text-[#B08D57] uppercase">
-                Barrister & Solicitor
+              <span className="block text-[10px] sm:text-[11px] font-sans-body tracking-[0.16em] text-[#B08D57] uppercase mt-0.5">
+                LL.B • B.L • AICMC
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-6 lg:gap-7">
             {NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+              const isActive =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-sans-body tracking-wider transition-colors py-1 relative ${
+                  className={`text-xs lg:text-[13px] font-sans-body tracking-wider transition-colors py-1.5 relative whitespace-nowrap ${
                     isActive
-                      ? "text-[#B08D57] font-semibold"
+                      ? "text-[#C5A069] font-semibold"
                       : "text-white/80 hover:text-[#F7F5F0]"
                   }`}
                 >
                   {link.name}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#B08D57]" />
-                  )}
+                  <span
+                    className={`absolute bottom-0 left-0 right-0 h-[2px] bg-[#B08D57] transition-transform duration-200 origin-left ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
                 </Link>
               );
             })}
           </nav>
 
           {/* Desktop Right CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden xl:flex items-center gap-3 shrink-0">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Chat on WhatsApp"
-              className="flex items-center gap-1.5 text-xs text-[#E5E7EB] hover:text-[#B08D57] transition-colors px-2 py-1"
+              aria-label="Message on WhatsApp"
+              className="flex items-center gap-1.5 text-xs text-[#E5E7EB]/85 hover:text-[#C5A069] transition-colors px-2 py-1.5"
             >
               <MessageSquare className="w-3.5 h-3.5 text-[#B08D57]" />
               <span>WhatsApp</span>
@@ -102,17 +109,19 @@ export default function Header() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-4 py-2 border border-[#B08D57] text-xs uppercase tracking-widest font-semibold text-[#B08D57] bg-transparent hover:bg-[#B08D57] hover:text-[#0B1F33] transition-all duration-200"
+              className="inline-flex items-center justify-center px-4 py-2 border border-[#B08D57] text-[11px] uppercase tracking-[0.15em] font-semibold text-[#C5A069] bg-transparent hover:bg-[#B08D57] hover:text-[#0B1F33] transition-all duration-200"
             >
-              Book Consultation
+              Get in Touch
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            type="button"
+            onClick={() => setMenuOpenPath(mobileMenuOpen ? null : pathname)}
+            aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
-            className="md:hidden p-2 text-white/90 hover:text-[#B08D57] focus:outline-none"
+            className="md:hidden p-2 text-white/90 hover:text-[#B08D57] transition-colors"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -121,20 +130,22 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#071524]/98 backdrop-blur-xl md:hidden pt-20 px-6 flex flex-col justify-between pb-8">
-          <div className="space-y-6 pt-4">
-            <div className="text-xs uppercase tracking-widest text-[#B08D57] border-b border-white/10 pb-2">
+        <div className="fixed inset-0 z-40 bg-[#071524]/98 backdrop-blur-xl md:hidden pt-24 px-6 flex flex-col justify-between pb-8 overflow-y-auto">
+          <div className="space-y-6 pt-2">
+            <div className="text-[11px] uppercase tracking-[0.2em] text-[#B08D57] border-b border-white/10 pb-2.5 font-semibold">
               Navigation
             </div>
-            <nav className="flex flex-col space-y-4">
+            <nav aria-label="Mobile navigation" className="flex flex-col space-y-4">
               {NAV_LINKS.map((link) => {
-                const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+                const isActive =
+                  pathname === link.href ||
+                  (link.href !== "/" && pathname.startsWith(link.href));
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`text-xl font-serif-title tracking-wide transition-colors ${
-                      isActive ? "text-[#B08D57] font-bold" : "text-white/80 hover:text-white"
+                    className={`text-2xl font-serif-title tracking-wide transition-colors ${
+                      isActive ? "text-[#C5A069] font-semibold" : "text-white/85 hover:text-white"
                     }`}
                   >
                     {link.name}
@@ -144,16 +155,19 @@ export default function Header() {
             </nav>
           </div>
 
-          <div className="border-t border-white/10 pt-6 space-y-4">
-            <div className="flex items-center justify-between text-xs text-white/70">
+          <div className="border-t border-white/10 pt-6 space-y-4 mt-8">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-white/75">
               <span>{LAWYER_DATA.location}</span>
-              <a href={`tel:${LAWYER_DATA.contact.phone}`} className="flex items-center gap-1 text-[#B08D57]">
+              <a
+                href={`tel:${LAWYER_DATA.contact.phone}`}
+                className="flex items-center gap-1.5 text-[#C5A069] font-mono"
+              >
                 <Phone className="w-3.5 h-3.5" />
                 {LAWYER_DATA.contact.phoneDisplay}
               </a>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 pt-2">
+            <div className="grid grid-cols-2 gap-3 pt-1">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -167,7 +181,7 @@ export default function Header() {
                 href="/contact"
                 className="flex items-center justify-center gap-1.5 py-3 px-4 bg-[#B08D57] text-[#0B1F33] text-xs font-semibold uppercase tracking-wider hover:bg-[#C5A069]"
               >
-                Consultation
+                Enquire
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
